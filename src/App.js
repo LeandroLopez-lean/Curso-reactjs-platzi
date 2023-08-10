@@ -1,6 +1,6 @@
 import {TodoCounter} from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
-/* import { CreateTodoButton } from './CreateButton'; */
+import { CreateTodoButton } from './CreateButton';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodeItem';
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
 
-      <TodoCounter />
+      <TodoCounter  />
       <TodoSearch />
 
       <TodoList>
@@ -17,7 +17,7 @@ function App() {
         <TodoItem />
         <TodoItem />
       </TodoList>
-      {/* <CreateTodoButton /> */}
+      <CreateTodoButton />
     </div>
   );
 }
