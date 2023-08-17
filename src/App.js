@@ -17,18 +17,30 @@ function App() {
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
 
-  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const completedTodos = todos.filter(
+    todo => !!todo.completed
+    ).length;
   const totalTodos = todos.length;
 
   const searchedTodos = todos.filter(
     (todo) => {
-      return todo.text.toLowerCase().includes(searchValue);
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLocaleLowerCase();
+      return todo.text.includes(searchText);
     }
   );
 
-  console.log("El usuarios busca " + searchValue);
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos[todoIndex].completed = true;
+    setTodos(newTodos);
+  };
+
   return (
-    <React.Fragment>
+    <>
 
       <TodoCounter 
         completed={completedTodos} 
@@ -45,11 +57,12 @@ function App() {
             key={todo.text} 
             text={todo.text}
             completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
           />
         ))}
       </TodoList>
       <CreateTodoButton />
-    </React.Fragment>
+    </>
   );
 }
 
