@@ -10,7 +10,7 @@ const defaultTodos = [
   { text: "tomar curso react", completed: false },
   { text: "llorar con la llorona", completed: true },
   { text: "hacer lo que quiera", completed: false },
-  { text: "useState", completed: true },
+  { text: "useState", completed: false },
 ];
 
 function App() {
@@ -25,15 +25,15 @@ function App() {
   const searchedTodos = todos.filter(
     (todo) => {
       const todoText = todo.text.toLowerCase();
-      const searchText = searchValue.toLocaleLowerCase();
-      return todo.text.includes(searchText);
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
     }
   );
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos[todoIndex].completed = true;
     setTodos(newTodos);
@@ -41,7 +41,6 @@ function App() {
 
   return (
     <>
-
       <TodoCounter 
         completed={completedTodos} 
         total={totalTodos} 
