@@ -1,5 +1,5 @@
 import React from 'react';
-import {TodoCounter} from './TodoCounter';
+import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { CreateTodoButton } from './CreateButton';
 import { TodoList } from './TodoList';
@@ -19,7 +19,7 @@ function App() {
 
   const completedTodos = todos.filter(
     todo => !!todo.completed
-    ).length;
+  ).length;
   const totalTodos = todos.length;
 
   const searchedTodos = todos.filter(
@@ -40,12 +40,12 @@ function App() {
   };
 
   const deleteTodo = (text) => {
-    const newTodos = [...todos]; 
+    const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-       (todo) => todo.text === text); 
-    newTodos.splice(todoIndex, 1); 
+      (todo) => todo.text === text);
+    newTodos.splice(todoIndex, 1);
     setTodos(newTodos);
-    };
+  };
 
   return (
     <>
@@ -57,11 +57,10 @@ function App() {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
-
       <TodoList>
         {searchedTodos.map(todo => (
           <TodoItem
-            key={todo.text} 
+            key={todo.text}
             text={todo.text}
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
