@@ -3,7 +3,7 @@ import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { CreateTodoButton } from './CreateButton';
 import { TodoList } from './TodoList';
-import { TodoItem } from './TodeItem';
+import { TodoItem } from './TodoItem';
 
 const defaultTodos = [
   { text: "Cortar cebolla", completed: true },
@@ -33,7 +33,7 @@ function App() {
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos[todoIndex].completed = true;
     setTodos(newTodos);
