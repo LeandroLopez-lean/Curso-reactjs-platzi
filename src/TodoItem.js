@@ -7,21 +7,16 @@ function TodoItem(props) {
     <li className="TodoItem">
       <CompleteIcon 
         completed={props.completed}
-
+        onComplete={props.onComplete}
       />
-      {/* <span 
-        className={`Icon Icon-check ${props.completed && "Icon-check--active"}`}
-        onClick={props.onComplete}
-      > 
-        v
-      </span>*/}
+     
       <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>
         {props.text}
       </p>
-      <DeleteIcon />
-      {/* <span className="Icon Icon-delete" onClick={props.onDelete}>
-         
-      </span>*/}
+      <DeleteIcon 
+        onDelete={props.onDelete}
+      />
+   
     </li>
   );
 }
