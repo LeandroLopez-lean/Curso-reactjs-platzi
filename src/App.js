@@ -5,16 +5,16 @@ import { CreateTodoButton } from './CreateButton';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 
-/* const defaultTodos = [
+const defaultTodos = [
   { text: "Cortar cebolla", completed: true },
   { text: "tomar curso react", completed: false },
   { text: "llorar con la llorona", completed: true },
   { text: "hacer lo que quiera", completed: false },
   { text: "useState", completed: false },
-]; */
+];
 
 function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_1');
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
   let parsedTodos = localStorage.getItem('TODOS_V1');
 
   const [todos, setTodos] = React.useState(parsedTodos);
