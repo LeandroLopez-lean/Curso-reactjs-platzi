@@ -1,23 +1,20 @@
 import React from 'react';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
-import { CreateTodoButton } from './CreateButton';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
+import { CreateTodoButton } from './CreateTodoButton';
 
 const defaultTodos = [
-  { text: "Cortar cebolla", completed: true },
-  { text: "tomar curso react", completed: false },
-  { text: "llorar con la llorona", completed: true },
-  { text: "hacer lo que quiera", completed: false },
-  { text: "useState", completed: false },
+  { text: 'Cortar cebolla', completed: true },
+  { text: 'Tomar el Curso de Intro a React.js', completed: false },
+  { text: 'Llorar con la Llorona', completed: false },
+  { text: 'LALALALALA', completed: false },
+  { text: 'Usar estados derivados', completed: true },
 ];
 
 function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos = localStorage.getItem('TODOS_V1');
-
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(
@@ -36,7 +33,7 @@ function App() {
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text === text
+      (todo) => todo.text == text
     );
     newTodos[todoIndex].completed = true;
     setTodos(newTodos);
@@ -45,21 +42,23 @@ function App() {
   const deleteTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text === text);
+      (todo) => todo.text == text
+    );
     newTodos.splice(todoIndex, 1);
     setTodos(newTodos);
   };
-
+  
   return (
     <>
       <TodoCounter
         completed={completedTodos}
-        total={totalTodos}
+        total={totalTodos} 
       />
       <TodoSearch
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
+
       <TodoList>
         {searchedTodos.map(todo => (
           <TodoItem
@@ -71,11 +70,10 @@ function App() {
           />
         ))}
       </TodoList>
+      
       <CreateTodoButton />
     </>
   );
 }
-
-
 
 export default App;
